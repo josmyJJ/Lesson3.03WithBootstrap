@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Course Details</title>
+    <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
+<nav th:replace="base :: nav"></nav>
+<!--- sdjlfj sldjf -->
 
 <h1>Course Details</h1>
 
@@ -14,9 +17,7 @@ Instructor :<span th:text="${course.instructor}" ></span><br />
 Description :<p th:text="${course.description}" ></p>
 Credits :<span th:text="${course.credit}" ></span><br />
 
-<!--an option to delete the course, using its id as a PARAMETER in
-the route to delete the item.-->
 <a th:href="@{/delete/{id}(id=${course.id})}">Delete this course</a>
-
+<span th:replace="base :: jslinks"></span>
 </body>
 </html>

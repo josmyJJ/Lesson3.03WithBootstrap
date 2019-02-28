@@ -3,28 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Course List</title>
+    <th:block th:insert="base :: header"></th:block>
 </head>
 <body>
+<nav th:replace="base :: nav"></nav>
 
 <h1>Course List</h1>
 <a href="/add">Add a Course</a><br />
-<table>
+
+<table class="table">
     <tr>
         <th>Title</th>
         <th>Instructor</th>
         <th>Credits</th>
         <td>Actions</td>
     </tr>
-    <tr th:each="course : ${courses}">
-        <td th:text="${course.title}"></td>
-        <td th:text="${course.instructor}"></td>
-        <td th:text="${course.credit}"></td>
+    <tr th:each="oneCourse : ${courses}">
+        <td th:text="${oneCourse.title}"></td>
+        <td th:text="${oneCourse.instructor}"></td>
+        <td th:text="${oneCourse.credit}"></td>
         <td>
-            <a th:href="@{/update/{id}(id=${course.id})}">Update</a> -
-            <a th:href="@{/detail/{id}(id=${course.id})}">Details</a> -
-            <a th:href="@{/delete/{id}(id=${course.id})}">Delete</a>
+            <a th:href="@{/update/{id}(id=${oneCourse.id})}">Update</a> -
+            <a th:href="@{/detail/{id}(id=${oneCourse.id})}">Details</a> -
+            <a th:href="@{/delete/{id}(id=${oneCourse.id})}">Delete</a>
         </td>
     </tr>
 </table>
+<span th:replace="base :: jslinks"></span>
+
+<script>
+    //  Jquery for smooth scrolling
+    $('.nav-link, .navbar-brand, .new-button').click(function () {
+        var sectionTo = $(this).attr('href');
+        $('html, body').animate({
+            scrollTop: $(sectionTo).offset().top
+        }, 1500);
+    });
+
+</script>
 </body>
 </html>

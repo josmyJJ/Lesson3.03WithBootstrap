@@ -14,7 +14,7 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
 
-//  @Autowired tells the compiler to instantiate the repository objectwhen the
+//  @Autowired tells the compiler to instantiate the repository object when the
 //  application runs, so you don’t have to type out that line so many times!
   @Autowired
   CourseRepository courseRepository;
